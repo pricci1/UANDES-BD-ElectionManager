@@ -35,9 +35,20 @@ namespace ElectionManager
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            AgregarCandidato agregarCandidato = new AgregarCandidato();
-            agregarCandidato.IdEleccion = IdEleccion;
+            AgregarCandidato agregarCandidato = new AgregarCandidato {IdEleccion = IdEleccion};
             agregarCandidato.ShowDialog();
+            this.EditarElecciones_Load(this, EventArgs.Empty);
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            var rowIndex = dataGridViewCandidatos.SelectedCells[0].RowIndex;
+            using (DataTable dt = (DataTable)dataGridViewCandidatos.DataSource)
+            {
+                var idCandidato = Convert.ToInt16(dt.Rows[rowIndex].Field<int>("id_candidato"));
+                Database.SendCommand(@"DELETE FROM Candidato WHERE id_candidato = "+ idCandidato +";");
+            }
+            this.EditarElecciones_Load(this, EventArgs.Empty);
         }
     }
 }
