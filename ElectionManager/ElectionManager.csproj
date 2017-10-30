@@ -48,18 +48,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarCandidato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarCandidato.Designer.cs">
+      <DependentUpon>AgregarCandidato.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="EditarElecciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarElecciones.Designer.cs">
+      <DependentUpon>EditarElecciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditarPersona.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EditarPersona.Designer.cs">
       <DependentUpon>EditarPersona.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elections.cs">
+    <Compile Include="Elecciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Elections.Designer.cs">
-      <DependentUpon>Elections.cs</DependentUpon>
+    <Compile Include="Elecciones.Designer.cs">
+      <DependentUpon>Elecciones.cs</DependentUpon>
     </Compile>
     <Compile Include="EsVocal.cs">
       <SubType>Form</SubType>
@@ -93,11 +105,17 @@
     <Compile Include="VerPersona.Designer.cs">
       <DependentUpon>VerPersona.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AgregarCandidato.resx">
+      <DependentUpon>AgregarCandidato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarElecciones.resx">
+      <DependentUpon>EditarElecciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditarPersona.resx">
       <DependentUpon>EditarPersona.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Elections.resx">
-      <DependentUpon>Elections.cs</DependentUpon>
+    <EmbeddedResource Include="Elecciones.resx">
+      <DependentUpon>Elecciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EsVocal.resx">
       <DependentUpon>EsVocal.cs</DependentUpon>

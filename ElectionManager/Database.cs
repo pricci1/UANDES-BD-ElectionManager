@@ -15,8 +15,8 @@ namespace ElectionManager
 
         static Database()
         {
-            //connString = "Host=localhost;Port=5432;User Id=postgres;Database=test;Password=1234";
-            connString = "Host=201.238.213.114;Port=54321;User Id=grupo24;Database=grupo24;Password=rjEs6l";
+            connString = "Host=localhost;Port=5432;User Id=postgres;Database=test;Password=1234";
+            //connString = "Host=201.238.213.114;Port=54321;User Id=grupo24;Database=grupo24;Password=rjEs6l";
         }
 
         public static string Test(string text)
@@ -68,6 +68,19 @@ namespace ElectionManager
             return ds;
         }
 
+        public static void SendCommand(string pgsqlCmd)
+        {
+            using (var conn = new NpgsqlConnection(connString)) // Create connection to db
+            {
+                conn.Open(); // Open connection
+                using (var cmd = new NpgsqlCommand(pgsqlCmd, conn))
+                {
+                    cmd.ExecuteNonQuery(); // Execute INSERT sql command
+                }
+                conn.Close(); // Close connection
+            }
+        }
+
         public static DataSet GetElecciones()
         {
             return GetDataSet(@"SELECT e.id, e.categoria, e.fecha FROM eleccion e;");
@@ -97,6 +110,11 @@ namespace ElectionManager
         {
             var personaRut = GetDataSet(@"SELECT * FROM persona WHERE rut =" + " '" + rut + "';");
             return personaRut;
+        }
+
+        public static DataSet GetCandidatosFromEleccion(int idEleccion)
+        {
+            return GetDataSet(@"SELECT id_candidato, rut, tipo FROM candidato WHERE ideleccion =" + " '" + idEleccion + "';");
         }
 
         // To transpose datatable: from: https://www.codeproject.com/Articles/44274/Transpose-a-DataTable-using-C

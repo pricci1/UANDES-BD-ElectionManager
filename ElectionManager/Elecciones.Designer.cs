@@ -1,6 +1,6 @@
 ﻿namespace ElectionManager
 {
-    partial class Elections
+    partial class Elecciones
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Elections));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Elecciones));
             this.dataGridViewElecciones = new System.Windows.Forms.DataGridView();
             this.btnVer = new System.Windows.Forms.Button();
             this.btnAnadir = new System.Windows.Forms.Button();
@@ -57,6 +57,7 @@
             this.btnVer.TabIndex = 1;
             this.btnVer.Text = "Ver";
             this.btnVer.UseVisualStyleBackColor = true;
+            this.btnVer.Click += new System.EventHandler(this.btnVer_Click);
             // 
             // btnAnadir
             // 
@@ -66,6 +67,7 @@
             this.btnAnadir.TabIndex = 2;
             this.btnAnadir.Text = "Añadir";
             this.btnAnadir.UseVisualStyleBackColor = true;
+            this.btnAnadir.Click += new System.EventHandler(this.btnAnadir_Click);
             // 
             // btnEditar
             // 
@@ -85,6 +87,7 @@
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnRefresh
             // 
@@ -107,7 +110,7 @@
             this.Controls.Add(this.btnAnadir);
             this.Controls.Add(this.btnVer);
             this.Controls.Add(this.dataGridViewElecciones);
-            this.Name = "Elections";
+            this.Name = "Elecciones";
             this.ShowIcon = false;
             this.Text = "Elecciónes";
             this.Load += new System.EventHandler(this.Elections_Load);

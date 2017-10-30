@@ -31,7 +31,7 @@ namespace ElectionManager
 
         private void btnElecciones_Click(object sender, EventArgs e)
         {
-            Elections elecciones = new Elections();
+            Elecciones elecciones = new Elecciones();
             elecciones.Show();
         }
 
