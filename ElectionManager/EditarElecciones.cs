@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ElectionManager
@@ -21,6 +16,7 @@ namespace ElectionManager
         private void EditarElecciones_Load(object sender, EventArgs e)
         {
             dataGridViewCandidatos.DataSource = Database.GetCandidatosFromEleccion(IdEleccion).Tables[0];
+            dateTimePicker1.Value = Database.GetDataSet(@"select fecha from eleccion where id = "+IdEleccion+";").Tables[0].Rows[0].Field<DateTime>("fecha");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -30,14 +26,14 @@ namespace ElectionManager
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            this.EditarElecciones_Load(this, EventArgs.Empty);
+            EditarElecciones_Load(this, EventArgs.Empty);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             AgregarCandidato agregarCandidato = new AgregarCandidato {IdEleccion = IdEleccion};
             agregarCandidato.ShowDialog();
-            this.EditarElecciones_Load(this, EventArgs.Empty);
+            EditarElecciones_Load(this, EventArgs.Empty);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -48,7 +44,15 @@ namespace ElectionManager
                 var idCandidato = Convert.ToInt16(dt.Rows[rowIndex].Field<int>("id_candidato"));
                 Database.SendCommand(@"DELETE FROM Candidato WHERE id_candidato = "+ idCandidato +";");
             }
-            this.EditarElecciones_Load(this, EventArgs.Empty);
+            EditarElecciones_Load(this, EventArgs.Empty);
+        }
+
+        private void btnCambiar_Click(object sender, EventArgs e)
+        {
+            var fecha = dateTimePicker1.Value.ToString().Replace('/', '-')
+                .Remove(dateTimePicker1.Value.ToString().Length - 3, 3);
+            Database.SendCommand(@"UPDATE eleccion set fecha ='"+ dateTimePicker1.Value.ToString("yyyy-MM-dd") + "' WHERE id="+ IdEleccion + ";");
+            //MessageBox.Show(dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss")+ "id: "+IdEleccion);
         }
     }
 }
