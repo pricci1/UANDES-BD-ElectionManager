@@ -19,8 +19,10 @@ namespace ElectionManager
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            Database.GetInfoFromRut("17.455.344-3").TryGetValue("nombre", out var x);
-            MessageBox.Show((string)x,@"Calling a function from Database");
+            //Database.GetInfoFromRut("17.455.344-3").TryGetValue("nombre", out var x);
+            //MessageBox.Show((string)x,@"Calling a function from Database
+            PieChart pieChart = new PieChart();
+            pieChart.Show();
         }
 
         private void btnInfoGeneral_Click(object sender, EventArgs e)

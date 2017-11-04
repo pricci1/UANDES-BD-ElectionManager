@@ -39,7 +39,12 @@ namespace ElectionManager
 
         private void btnVer_Click(object sender, EventArgs e)
         {
+            var rowIndex = dataGridViewElecciones.SelectedCells[0].RowIndex; // Index of selected row
             MessageBox.Show(@"Ver");
+            PieChart votosChart = new PieChart();
+            using (DataTable dt = (DataTable)dataGridViewElecciones.DataSource)
+                votosChart.IdEleccion = Convert.ToInt16(dt.Rows[rowIndex].Field<int>("id"));
+            votosChart.ShowDialog();
         }
 
         private void btnAnadir_Click(object sender, EventArgs e)
