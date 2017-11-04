@@ -44,12 +44,33 @@ namespace ElectionManager
 
         private void btnAnadir_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(@"Añadir");
+            AgregarEleccion agregarEleccion = new AgregarEleccion();
+            agregarEleccion.ShowDialog();
+            this.btnRefresh_Click(this, EventArgs.Empty);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(@"Eliminar");
+            // Obtain id of selected elecion
+            
+            var rowIndex = dataGridViewElecciones.SelectedCells[0].RowIndex;
+            using (DataTable dt = (DataTable)dataGridViewElecciones.DataSource)
+            {
+                var idEleccionSeleccionada = Convert.ToInt16(dt.Rows[rowIndex].Field<int>("id"));
+            }
+
+            DialogResult eliminarYesNo = MessageBox.Show(@"¿Seguro que desea eliminar esta elección?", @"Alerta!", MessageBoxButtons.YesNo);
+            if (eliminarYesNo == DialogResult.Yes)
+            {
+                Database.SendCommand($"");
+                MessageBox.Show(@"Eleccion eliminada");
+            }
+            else if (eliminarYesNo == DialogResult.No)
+            {
+                MessageBox.Show(@"No eliminar!!");
+
+            }
+            this.btnRefresh_Click(this, EventArgs.Empty);
         }
     }
 }

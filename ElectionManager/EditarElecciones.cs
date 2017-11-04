@@ -42,16 +42,15 @@ namespace ElectionManager
             using (DataTable dt = (DataTable)dataGridViewCandidatos.DataSource)
             {
                 var idCandidato = Convert.ToInt16(dt.Rows[rowIndex].Field<int>("id_candidato"));
-                Database.SendCommand(@"DELETE FROM Candidato WHERE id_candidato = "+ idCandidato +";");
+                Database.SendCommand(@"DELETE FROM Candidato WHERE id_candidato = " + idCandidato + ";");
             }
             EditarElecciones_Load(this, EventArgs.Empty);
         }
 
         private void btnCambiar_Click(object sender, EventArgs e)
         {
-            var fecha = dateTimePicker1.Value.ToString().Replace('/', '-')
-                .Remove(dateTimePicker1.Value.ToString().Length - 3, 3);
             Database.SendCommand(@"UPDATE eleccion set fecha ='"+ dateTimePicker1.Value.ToString("yyyy-MM-dd") + "' WHERE id="+ IdEleccion + ";");
+            MessageBox.Show(@"Cambios realizados");
             //MessageBox.Show(dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss")+ "id: "+IdEleccion);
         }
     }

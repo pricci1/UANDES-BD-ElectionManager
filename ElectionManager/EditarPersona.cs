@@ -61,7 +61,27 @@ namespace ElectionManager
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //Agarrar todos los valores y ponerlos en la DB
+            var sqlinsert = String.Format("UPDATE persona SET " +
+                                          "nombre = '{0}'," +
+                                          "telefono = '{1}'," +
+                                          "antecedentes = {2}," +
+                                          "pais = '{3}'," +
+                                          "calle = '{4}'," +
+                                          "numero_casa = {5}," +
+                                          "region = '{6}'," +
+                                          "departamento = '{7}'," +
+                                          "ciudad = '{8}'," +
+                                          "fecha_de_nacimiento = '{9}'," +
+                                          "idmesa = {10}," +
+                                          "partidopolitico = {11}," +
+                                          "comuna = '{12}'," +
+                                          "vive = {13}" +
+                                          " WHERE rut = '{14}';", txtNombre.Text, txtTelefono.Text, chbAntecedentes.Checked,
+                                            txtPais.Text, txtCalle.Text, Convert.ToInt64(txtNumCasa.Text), txtRegion.Text,
+                                            txtDepto.Text, txtCiudad.Text, dateTimePickerNacimiento.Value, txtIdMesa.Text,
+                                            (txtPartido.Text == "")? "DEFAULT" : $"'{txtPartido.Text}'", txtComuna.Text, chbVive.Checked, Rut);
+            Database.SendCommand(sqlinsert);
+            this.Close();
         }
     }
 }

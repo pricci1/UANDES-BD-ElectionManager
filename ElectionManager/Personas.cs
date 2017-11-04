@@ -66,5 +66,11 @@ namespace ElectionManager
         {
             MessageBox.Show(@"No se puede eliminar personas");
         }
+
+        private void btnAnadir_Click(object sender, EventArgs e)
+        {
+            AgregarPersona agregarPersona = new AgregarPersona();
+            agregarPersona.ShowDialog();
+        }
     }
 }

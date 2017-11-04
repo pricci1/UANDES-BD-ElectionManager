@@ -54,6 +54,18 @@
     <Compile Include="AgregarCandidato.Designer.cs">
       <DependentUpon>AgregarCandidato.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarEleccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarEleccion.Designer.cs">
+      <DependentUpon>AgregarEleccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarPersona.Designer.cs">
+      <DependentUpon>AgregarPersona.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="EditarElecciones.cs">
       <SubType>Form</SubType>
@@ -107,6 +119,12 @@
     </Compile>
     <EmbeddedResource Include="AgregarCandidato.resx">
       <DependentUpon>AgregarCandidato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarEleccion.resx">
+      <DependentUpon>AgregarEleccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarPersona.resx">
+      <DependentUpon>AgregarPersona.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarElecciones.resx">
       <DependentUpon>EditarElecciones.cs</DependentUpon>
