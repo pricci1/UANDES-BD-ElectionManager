@@ -15,8 +15,8 @@ namespace ElectionManager
 
         static Database()
         {
-            connString = "Host=localhost;Port=5432;User Id=postgres;Database=test;Password=1234";
-            //connString = "Host=201.238.213.114;Port=54321;User Id=grupo24;Database=grupo24;Password=rjEs6l";
+            //connString = "Host=localhost;Port=5432;User Id=postgres;Database=test;Password=1234";
+            connString = "Host=201.238.213.114;Port=54321;User Id=grupo24;Database=grupo24;Password=rjEs6l";
         }
 
         public static string Test(string text)
